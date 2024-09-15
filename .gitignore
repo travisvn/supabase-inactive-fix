@@ -82,6 +82,10 @@ target/
 profile_default/
 ipython_config.py
 
+# Editor-specific
+.vscode/
+.idea/
+
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
@@ -129,6 +133,16 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Mac-specific files
+.DS_Store
+
+# Logs
+*.log
+
+# Secret keys or sensitive config
+config.json
+config.json.*
 
 # Spyder project settings
 .spyderproject

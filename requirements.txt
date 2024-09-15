@@ -1,0 +1,2 @@
+supabase
+python-dotenv
