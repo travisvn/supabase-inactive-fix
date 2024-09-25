@@ -45,8 +45,7 @@ def main():
             key = os.getenv(key_env_var)
 
         if not url or not key:
-            logging.error(f"Supabase URL or Key missing for '{
-                          name}'. Skipping.")
+            logging.error(f"Supabase URL or Key missing for '{name}'. Skipping.")
             all_successful = False
             if log_failed_databases:
                 failed_databases.append(name)
@@ -72,8 +71,7 @@ def main():
         # Get the count of entries in the table
         count = supabase_client.get_table_count()
         if count is None:
-            logging.error(f"Failed to get count for table '{
-                          table_name}' in database '{name}'.")
+            logging.error(f"Failed to get count for table '{table_name}' in database '{name}'.")
             all_successful = False
             if log_failed_databases:
                 failed_databases.append(name)
@@ -86,16 +84,14 @@ def main():
 
         # If there are more than 10 entries, delete a random one
         if count > 10:
-            logging.info(
-                f"Table '{table_name}' has more than 10 entries. Deleting a random entry.")
+            logging.info(f"Table '{table_name}' has more than 10 entries. Deleting a random entry.")
             success_delete = supabase_client.delete_random_entry()
             if not success_delete:
                 all_successful = False
                 if log_failed_databases and name not in failed_databases:
                     failed_databases.append(name)
         else:
-            logging.info(
-                f"Table '{table_name}' has 10 or fewer entries. No deletion needed.")
+            logging.info(f"Table '{table_name}' has 10 or fewer entries. No deletion needed.")
 
         # Collect status information
         if detailed_status_report:
