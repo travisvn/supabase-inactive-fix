@@ -45,8 +45,7 @@ def main():
             key = os.getenv(key_env_var)
 
         if not url or not key:
-            logging.error(f"Supabase URL or Key missing for '{
-                          name}'. Skipping.")
+            logging.error(f"Supabase URL or Key missing for '{name}'. Skipping.")
             all_successful = False
             if log_failed_databases:
                 failed_databases.append(name)
