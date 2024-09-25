@@ -45,7 +45,7 @@ def main():
             key = os.getenv(key_env_var)
 
         if not url or not key:
-            logging.error(f"Supabase URL or Key missing for '{name}'. Skipping.")
+        logging.error(f"Supabase URL or Key missing for '{name}'. Skipping.")
             all_successful = False
             if log_failed_databases:
                 failed_databases.append(name)
@@ -71,8 +71,7 @@ def main():
         # Get the count of entries in the table
         count = supabase_client.get_table_count()
         if count is None:
-            logging.error(f"Failed to get count for table '{
-                          table_name}' in database '{name}'.")
+            logging.error(f"Failed to get count for table '{table_name}' in database '{name}'.")
             all_successful = False
             if log_failed_databases:
                 failed_databases.append(name)

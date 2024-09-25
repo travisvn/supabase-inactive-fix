@@ -38,8 +38,7 @@ class SupabaseClient:
     def delete_random_entry(self):
         try:
             # Fetch all IDs from the table
-            response = self.client.table(
-                self.table_name).select('id').execute()
+            response = self.client.table(self.table_name).select('id').execute()
             if response.data:
                 ids = [item['id'] for item in response.data]
                 if not ids:
@@ -51,10 +50,8 @@ class SupabaseClient:
                 random_id = random.choice(ids)
 
                 # Delete the entry with the selected ID
-                self.client.table(self.table_name).delete().eq(
-                    'id', random_id).execute()
-                print(f"Deleted entry with id {
-                      random_id} from '{self.table_name}'.")
+                self.client.table(self.table_name).delete().eq('id', random_id).execute()
+                print(f"Deleted entry with id {random_id} from '{self.table_name}'.")  # Corrected f-string
                 return True
             else:
                 print(f"No data retrieved from '{self.table_name}'.")
