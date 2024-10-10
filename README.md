@@ -2,7 +2,6 @@
 
 ![GitHub stars](https://img.shields.io/github/stars/travisvn/supabase-inactive-fix?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/travisvn/supabase-inactive-fix?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/travisvn/supabase-inactive-fix?style=social)
 ![GitHub repo size](https://img.shields.io/github/repo-size/travisvn/supabase-inactive-fix)
 ![GitHub language count](https://img.shields.io/github/languages/count/travisvn/supabase-inactive-fix)
 ![GitHub top language](https://img.shields.io/github/languages/top/travisvn/supabase-inactive-fix)
