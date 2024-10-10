@@ -1,20 +1,25 @@
 # Supabase Inactive Fix
 
+![GitHub stars](https://img.shields.io/github/stars/travisvn/supabase-inactive-fix?style=social)
+![GitHub forks](https://img.shields.io/github/forks/travisvn/supabase-inactive-fix?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/travisvn/supabase-inactive-fix?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/travisvn/supabase-inactive-fix)
+![GitHub language count](https://img.shields.io/github/languages/count/travisvn/supabase-inactive-fix)
+![GitHub top language](https://img.shields.io/github/languages/top/travisvn/supabase-inactive-fix)
+![GitHub last commit](https://img.shields.io/github/last-commit/travisvn/supabase-inactive-fix?color=red)
+![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ftravisvn%2Fsupabase-inactive-fix&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)
+[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://img.shields.io/github/sponsors/travisvn)
+
 This project helps prevent Supabase projects from pausing due to inactivity by periodically inserting, monitoring, and deleting entries in the specified tables of multiple Supabase databases. The project uses a configuration file (`config.json`) to define multiple databases and automate the keep-alive actions.
 
-## Features
+## Features ⭐️
 
 - Insert a random string into a specified table for each Supabase database.
 - Monitor the number of entries in the table.
 - Automatically delete entries if the table contains more than a specified number of records.
 - Log successes and failures, and generate a detailed status report.
 
-## Requirements
-
-- Python 3.8+
-- A Supabase account and API keys for each database.
-
-## Setup
+## Setup 🚀
 
 1. Clone the repository:
     
@@ -82,7 +87,7 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
     python main.py
     ```
 
-## Supabase Database Setup 
+## Supabase Database Setup 🔧
 
 This project is predicated on accessing a `keep-alive` table in your Postgres database on Supabase. 
 
@@ -106,7 +111,7 @@ VALUES
 ```
     
 
-## Cron Job Setup
+## Cron Job Setup ⏱️
 
 To automate this script, you can create a cron job that runs the script periodically. Below are instructions for setting this up on macOS, Linux, and Windows.
 
