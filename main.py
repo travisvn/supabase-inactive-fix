@@ -10,9 +10,12 @@ from services.supabase_service import SupabaseClient
 log_failed_databases = True  # Set to True to log failed databases
 detailed_status_report = True  # Set to True to generate a detailed status report
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-
+# Configure logging with timestamp
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 def main():
     # Load configurations from config.json
