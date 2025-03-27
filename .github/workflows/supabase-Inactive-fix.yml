@@ -13,6 +13,8 @@ jobs:
         super_secret: ${{ secrets.CONFIG }}
       if: ${{ env.super_secret == '' }}
       run: exit 1
+    - name: Checkout
+      uses: actions/checkout@v4.2.2
     - name: Setup
       id: setup
       shell: bash
