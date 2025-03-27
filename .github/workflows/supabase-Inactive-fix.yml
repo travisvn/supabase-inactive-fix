@@ -7,27 +7,20 @@ jobs:
   work:
     runs-on: ubuntu-latest
     steps:
-    - name: Check secrets
-      id: check-secrets
-      env:
-        super_secret: ${{ secrets.CONFIG }}
-      if: ${{ env.super_secret == '' }}
-      run: exit 1
     - name: Checkout
       uses: actions/checkout@v4.2.2
-    - name: Setup
-      id: setup
+    - name: Run
+      id: run
       shell: bash
+      env:
+        CONFIG: ${{ secrets.CONFIG }}
+        ENV: ${{ secrets.ENV }}
       run: |
         python -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
         touch config.json
-        echo API_KEY=${{ secrets.CONFIG }} >> config.json
+        echo "$CONFIG" >> config.json
         touch .env
-        echo API_KEY=${{ secrets.ENV }} >> .env
-    - name: Run
-      id: run
-      shell: bash
-      run: |
+        echo "$ENV" >> .env
         python main.py
