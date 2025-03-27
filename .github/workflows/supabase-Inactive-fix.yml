@@ -9,18 +9,27 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4.2.2
+    - name: Create config-file
+      id: create-config-file
+      env:
+        CONFIG: ${{ secrets.CONFIG }}
+      if: ${{ env.CONFIG != '' }}
+      run: |
+        touch config.json
+        echo "$CONFIG" >> config.json
+    - name: Create env-file
+      id: Create-env-file
+      env:
+        ENV: ${{ secrets.ENV }}
+      if: ${{ env.ENV != '' }}
+      run: |
+        touch .env
+        echo "$ENV" >> .env
     - name: Run
       id: run
       shell: bash
-      env:
-        CONFIG: ${{ secrets.CONFIG }}
-        ENV: ${{ secrets.ENV }}
       run: |
         python -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
-        touch config.json
-        echo "$CONFIG" >> config.json
-        touch .env
-        echo "$ENV" >> .env
         python main.py
