@@ -3,10 +3,8 @@
 ![GitHub stars](https://img.shields.io/github/stars/travisvn/supabase-inactive-fix?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/travisvn/supabase-inactive-fix?style=social)
 ![GitHub repo size](https://img.shields.io/github/repo-size/travisvn/supabase-inactive-fix)
-![GitHub language count](https://img.shields.io/github/languages/count/travisvn/supabase-inactive-fix)
 ![GitHub top language](https://img.shields.io/github/languages/top/travisvn/supabase-inactive-fix)
 ![GitHub last commit](https://img.shields.io/github/last-commit/travisvn/supabase-inactive-fix?color=red)
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://img.shields.io/github/sponsors/travisvn)
 
 This project helps prevent Supabase projects from pausing due to inactivity by periodically inserting, monitoring, and deleting entries in the specified tables of multiple Supabase databases. The project uses a configuration file (`config.json`) to define multiple databases and automate the keep-alive actions.
 
