@@ -83,6 +83,12 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
     python main.py
     ```
 
+## GitHub Action
+1. Create repository secrets for the file content.
+  - `CONFIG` <-- `config.json`
+  - `ENV` <-- `.env`
+2. Open page `*github-repo*/actions/workflows/supabase-Inactive-fix.yml` and run the workflow manually to check that it works.
+
 ## Supabase Database Setup 🔧
 
 This project is predicated on accessing a `keep-alive` table in your Postgres database on Supabase. 
