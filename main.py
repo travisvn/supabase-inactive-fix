@@ -42,8 +42,12 @@ def main():
         key = config.get('supabase_key')
         table_name = config.get('table_name', 'KeepAlive')
 
-        # If using environment variables for keys
+        # If using environment variables for urls and keys
+        url_env_var = config.get('supabase_url_env')
         key_env_var = config.get('supabase_key_env')
+        
+        if url_env_var:
+            url = os.getenv(url_env_var)
         if key_env_var:
             key = os.getenv(key_env_var)
 
