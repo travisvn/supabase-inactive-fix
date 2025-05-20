@@ -14,8 +14,30 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
 - Monitor the number of entries in the table.
 - Automatically delete entries if the table contains more than a specified number of records.
 - Log successes and failures, and generate a detailed status report.
+- **Scheduled execution using Docker** - Run the script automatically every day at midnight
 
 ## Setup 🚀
+
+### Option 1: Setup with Docker (Recommended for scheduled runs)
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/travisvn/supabase-inactive-fix.git
+    cd supabase-inactive-fix
+    ```
+
+2. Create a `config.json` file in the project root (see configuration section below).
+
+3. Run the included start script to build and start the Docker container:
+    
+    ```bash
+    ./start.sh
+    ```
+    
+    This will set up a cron job to run the script every day at midnight.
+
+### Option 2: Manual Setup
 
 1. Clone the repository:
     
