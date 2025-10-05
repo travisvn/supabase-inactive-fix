@@ -58,7 +58,7 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
     ]
     ```
 
-    [See the section below for how to easily configure your database](#supabase-database-setup)
+    [See the section below for how to easily configure your database](#supabase-database-setup-)
     
     ### Environment Variables Explained
     
