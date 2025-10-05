@@ -1,0 +1,46 @@
+name: Supabase Keep-Alive
+
+# This workflow is OPT-IN and will NOT run automatically.
+# You must set the ENABLE_GITHUB_ACTIONS repository variable to 'true' to activate it.
+# See README.md for setup instructions.
+
+on:
+  schedule:
+    # Run at midnight UTC every Monday and Thursday
+    - cron: '0 0 * * 1,4'
+
+  # Allow manual triggering from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    # Only run if the ENABLE_GITHUB_ACTIONS variable is set to 'true'
+    # This prevents the workflow from running unintentionally
+    if: vars.ENABLE_GITHUB_ACTIONS == 'true'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run keep-alive script
+        run: python main.py
+        env:
+          # Add your Supabase keys as GitHub Secrets
+          # Go to: Settings > Secrets and variables > Actions > New repository secret
+          # Create secrets matching the env var names in your config.json
+          SUPABASE_KEY_1: ${{ secrets.SUPABASE_KEY_1 }}
+          SUPABASE_KEY_2: ${{ secrets.SUPABASE_KEY_2 }}
+          SUPABASE_KEY_3: ${{ secrets.SUPABASE_KEY_3 }}
+          SUPABASE_KEY_4: ${{ secrets.SUPABASE_KEY_4 }}
+          SUPABASE_KEY_5: ${{ secrets.SUPABASE_KEY_5 }}
+          # Add more as needed for your databases

@@ -17,8 +17,12 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
 
 ## Setup 🚀
 
+> **💡 Quick Start:** For the easiest setup, skip to [Deployment Options](#deployment-options-🚀) and use **GitHub Actions** (serverless, no installation required).
+
+### Local Development Setup
+
 1. Clone the repository:
-    
+
     ```bash
     git clone https://github.com/travisvn/supabase-inactive-fix.git
     cd supabase-inactive-fix
@@ -82,6 +86,85 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
     ```bash
     python main.py
     ```
+
+## Deployment Options 🚀
+
+### Option 1: GitHub Actions (Recommended - Serverless)
+
+The easiest way to deploy this project is using GitHub Actions, which runs completely serverless and free on GitHub's infrastructure.
+
+#### Steps:
+
+1. **Fork this repository** to your GitHub account.
+
+2. **Create your `config.json`** file:
+   - Copy `config.example.json` to `config.json`
+   - Update with your Supabase project URLs and table names
+   - Use `supabase_key_env` (not `supabase_key`) to reference environment variables
+
+   ```json
+   [
+     {
+       "name": "MyProject",
+       "supabase_url": "https://your-project-id.supabase.co",
+       "supabase_key_env": "SUPABASE_KEY_1",
+       "table_name": "keep-alive"
+     }
+   ]
+   ```
+
+3. **Commit and push your `config.json`** to your forked repository.
+
+4. **Set up GitHub Secrets and Variables**:
+   - Go to your forked repository on GitHub
+   - Navigate to **Settings** > **Secrets and variables** > **Actions**
+
+   **First, enable the workflow (Variables tab):**
+   - Click the **Variables** tab
+   - Click **New repository variable**
+   - Name: `ENABLE_GITHUB_ACTIONS`
+   - Value: `true`
+
+   **Then, add your API keys (Secrets tab):**
+   - Click the **Secrets** tab
+   - Click **New repository secret**
+   - Add secrets for each database (matching the env var names in your `config.json`):
+     - Name: `SUPABASE_KEY_1`
+     - Value: Your Supabase API key
+   - Repeat for all your databases (`SUPABASE_KEY_2`, `SUPABASE_KEY_3`, etc.)
+
+5. **Enable GitHub Actions**:
+   - Go to the **Actions** tab in your forked repository
+   - Click "I understand my workflows, go ahead and enable them"
+
+6. **Test the workflow**:
+   - In the Actions tab, select "Supabase Keep-Alive"
+   - Click "Run workflow" to test it manually
+   - Check the logs to ensure everything works
+
+**That's it!** The workflow will automatically run every Monday and Thursday at midnight UTC, keeping your Supabase databases active.
+
+> **📝 Note for Existing Users:** If you're currently using a local cron job and pull this update, the GitHub Actions workflow will NOT run automatically. It only activates when you explicitly set the `ENABLE_GITHUB_ACTIONS` variable to `true`. You can:
+> - **Keep using your cron job**: Do nothing, the workflow stays disabled
+> - **Switch to GitHub Actions**: Follow the setup steps above and disable your cron job
+> - **Use both** (not recommended): Enable both, but adjust schedules to avoid conflicts
+
+#### Customizing the Schedule
+
+Edit `.github/workflows/keep-alive.yml` and modify the cron expression:
+
+```yaml
+schedule:
+  - cron: '0 0 * * 1,4'  # Currently: Monday and Thursday at midnight UTC
+```
+
+### Option 2: Local Cron Job
+
+If you prefer to run the script on your own machine or server, you can set up a cron job.
+
+1. Follow the initial setup steps 1-4 from the main [Setup](#setup-🚀) section above.
+
+2. Set up a cron job (see [Cron Job Setup](#cron-job-setup-⏱️) below for details).
 
 ## Supabase Database Setup 🔧
 
