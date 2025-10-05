@@ -17,7 +17,7 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
 
 ## Setup 🚀
 
-> **💡 Quick Start:** For the easiest setup, skip to [Deployment Options](#deployment-options-🚀) and use **GitHub Actions** (serverless, no installation required).
+> **💡 Quick Start:** For the easiest setup, skip to [Deployment Options](#deployment-options-) and use **GitHub Actions** (serverless, no installation required).
 
 ### Local Development Setup
 
