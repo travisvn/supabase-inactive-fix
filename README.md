@@ -162,9 +162,9 @@ schedule:
 
 If you prefer to run the script on your own machine or server, you can set up a cron job.
 
-1. Follow the initial setup steps 1-4 from the main [Setup](#setup-🚀) section above.
+1. Follow the initial setup steps 1-4 from the main [Setup](#setup-) section above.
 
-2. Set up a cron job (see [Cron Job Setup](#cron-job-setup-⏱️) below for details).
+2. Set up a cron job (see [Cron Job Setup](#cron-job-setup-%EF%B8%8F) below for details).
 
 ## Supabase Database Setup 🔧
 
