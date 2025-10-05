@@ -41,20 +41,23 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
    
     Example configuration:
     
-    ```json
+    ```js
     [
+      // Use both environment variable for url and key
       {
         "name": "Database1",
-        "supabase_url": "https://your-supabase-url-1.supabase.co",
-        "supabase_key_env": "SUPABASE_KEY_1",  // Use environment variable for the key
+        "supabase_url_env": "SUPABASE_URL_1",
+        "supabase_key_env": "SUPABASE_KEY_1",
         "table_name": "KeepAlive"
       },
+      // Use both plain text variable for url and key
       {
         "name": "Database2",
         "supabase_url": "https://your-supabase-url-2.supabase.co",
-        "supabase_key": "your-direct-supabase-key",  // Directly define the key
+        "supabase_key": "your-direct-supabase-key",
         "table_name": "keep-alive"
-      }
+      },
+      // Mix use of env and plain text is also allowed
     ]
     ```
 
@@ -64,8 +67,8 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
     
     In the `config.json` file, you can define either:
     
-    - **Direct API Key**: Use the `"supabase_key"` field to directly specify your Supabase API key.
-    - **Environment Variable**: Use the `"supabase_key_env"` field to reference an environment variable where the key is stored. This is more secure, especially when running the script in different environments.
+    - **Direct URL and API Key**: Use the `"supabase_url"` field to directly specify your Supabase API Url. Use the `"supabase_key"` field to directly specify your Supabase API key.
+    - **Environment Variable**: Use the `"supabase_key_env"` field to reference an environment variable where the key is stored. Use the `"supabase_url_env"` field to reference an environment variable where the url is stored. This is more secure, especially when running the script in different environments.
     
     #### Example:
     
@@ -77,6 +80,9 @@ This project helps prevent Supabase projects from pausing due to inactivity by p
     Create a `.env` file and store variables there
     
     ```
+    SUPABASE_URL_1="your-supabase-url-1"
+    SUPABASE_URL_2="your-supabase-url-2"
+
     SUPABASE_KEY_1="your-supabase-key-1"
     SUPABASE_KEY_2="your-supabase-key-2"
     ```
@@ -245,6 +251,25 @@ Windows does not have cron jobs, but you can achieve similar functionality using
     
 6. Save the task. The script will now run automatically according to the schedule you specified.
     
+### GitHub Actions Cron Setup
+
+A simple cron job is already configured in `.github/workflows/cron.yaml` and will:
+- Set up Python environment
+- Install dependencies
+- Create config and .env files
+- Run the keep-alive script
+- Upload logs if the job fails
+
+**Usage:**
+
+1. Go to your repository's **Settings** > **Secrets and variables** > **Actions**
+2. Add the following repository secrets:
+   - `SUPABASE_URL_1` with your Supabase URL
+   - `SUPABASE_KEY_1` with your Supabase key
+   - _Feel free to add more based on your config, and you will need to adjust `cron.yaml` config generating section._
+3. Add a repository variable:
+   - `ENABLE_CRON` set to `true`
+4. The workflow is scheduled to execute automatically every Monday and Thursday at 00:00 UTC. Additionally, you can manually trigger the workflow by navigating to the Actions tab and selecting "Run workflow". Modify the schedule as needed to suit your requirements.
 
 ## Contribution
 
